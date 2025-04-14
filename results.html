@@ -1,0 +1,7 @@
+<h2>Voting Results</h2>
+<table border="1">
+  <tr><th>Name</th><th>Party</th><th>Votes</th></tr>
+  {% for r in results %}
+    <tr><td>{{r.Name}}</td><td>{{r.Party}}</td><td>{{r.Votes}}</td></tr>
+  {% endfor %}
+</table>

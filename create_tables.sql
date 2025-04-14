@@ -1,0 +1,21 @@
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY IDENTITY,
+    Username NVARCHAR(100),
+    Email NVARCHAR(100) UNIQUE,
+    PasswordHash NVARCHAR(255),
+    HasVoted BIT DEFAULT 0
+);
+
+CREATE TABLE Candidates (
+    CandidateID INT PRIMARY KEY IDENTITY,
+    Name NVARCHAR(100),
+    Party NVARCHAR(100),
+    Votes INT DEFAULT 0
+);
+
+CREATE TABLE Votes (
+    VoteID INT PRIMARY KEY IDENTITY,
+    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    CandidateID INT FOREIGN KEY REFERENCES Candidates(CandidateID),
+    VoteTime DATETIME DEFAULT GETDATE()
+);
